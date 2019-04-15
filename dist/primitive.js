@@ -1,25 +1,26 @@
+"use strict";
 // number
-var num = 2;
-var binary = 17;
-var nan = NaN;
+let num = 2;
+let binary = 0b10001;
+let nan = NaN;
 // string
-var myName = 'syj';
+let myName = 'syj';
 // boolean
-var createdByNewBoolean = new Boolean(1);
+let createdByNewBoolean = new Boolean(1);
 // 'boolean' is a primitive, but 'Boolean' is a wrapper object. Prefer using 'boolean' when possible.
-var createdByNewBoolean1 = new Boolean(1);
-var createdByNewBoolean2 = Boolean(1);
-var isTrue = false;
+let createdByNewBoolean1 = new Boolean(1);
+let createdByNewBoolean2 = Boolean(1);
+let isTrue = false;
 // Void
-var aVoid = undefined;
+let aVoid = undefined;
 // undefined
-var u = 1;
+let u = 1;
 //Type '1' is not assignable to type 'undefined'.
-var u1 = undefined;
+let u1 = undefined;
 // null
-var n = null;
+let n = null;
 // any
-var anyThing = 'yoyo';
+let anyThing = 'yoyo';
 anyThing = 12;
 console.log(anyThing.name);
 console.log(anyThing.person.age);
@@ -27,10 +28,16 @@ anyThing.person.cry();
 // 声明一个变量为任意值之后，对它的任何操作，返回的内容的类型都是任意值。
 // 所以尽量不要用 any
 // # 类型推论
-var str = 'yoyo';
+let str = 'yoyo';
 str = 12;
-// 
+// Type '12' is not assignable to type 'string'.
 // 没有明确的指定类型的时候 ts 会推测出一个类型，那这里就是 string
-var str1;
+let str1;
 str1 = 'momo';
 str1 = 13;
+// 定义 str1 的时候没有赋值，则被推论成 any
+// # 联合类型
+// 取值可以为多种类型中的一种
+let strOrNum = 'waka';
+strOrNum = 12;
+strOrNum.toString();

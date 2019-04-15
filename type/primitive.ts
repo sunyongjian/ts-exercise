@@ -66,6 +66,7 @@ str1 = 13;
 // 定义 str1 的时候没有赋值，则被推论成 any
 
 // # 联合类型
+// 取值可以为多种类型中的一种
 let strOrNum: string | number = 'waka';
 strOrNum = 12;
 strOrNum.toString();
