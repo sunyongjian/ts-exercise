@@ -14,6 +14,4 @@ let cat2 = {
     age: 2,
     sex: 0
 };
-//Property 'age' of type 'number' is not assignable to string index type 'string'.
-// 因为 age 可选属性的类型的 number，任意属性的类型是 string，所以不是其子集。
-// 任意属性的类型改成 any 即可
+let box = { height: 5, width: 6, scale: 10 };

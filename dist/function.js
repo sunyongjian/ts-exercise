@@ -44,3 +44,15 @@ function concat(array, ...etc) {
     return array;
 }
 concat([1], 2, 3);
+// 回调函数返回值类型
+// 不要为返回值被忽略的回调函数设置一个any类型的返回值类型：
+/* 错误 */
+function fn(x) {
+    x();
+}
+// 应该给返回值被忽略的回调函数设置void类型的返回值类型：
+/* OK */
+function fn(x) {
+    x();
+}
+// 函数重载，这块在函数声明去详解

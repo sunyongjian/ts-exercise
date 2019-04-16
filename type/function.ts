@@ -27,6 +27,7 @@ let mySum1 = (x: number, y: number): number => x + y;
 
 
 
+
 // 3. interface 接口定义
 interface MyFn {
   (str: string): number
@@ -45,13 +46,13 @@ function getFullName(firstName: string, lastName: string = 'yy') {
 }
 
 // 可选参数
-function request(url: string, callback: (data: any) => any) {
+function request(url: string, callback: (data: any) => void) {
   var xhr = new XMLHttpRequest();
   xhr.open("GET", url, true);
   xhr.onreadystatechange = () => {
-      if (xhr.readyState === 4) {
-        if(callback) callback(xhr.responseText);
-      };
+    if (xhr.readyState === 4) {
+      if(callback) callback(xhr.responseText);
+    };
   }
   xhr.send();
 }
@@ -62,3 +63,19 @@ function concat(array: any[], ...etc: any[]) {
   return array;
 }
 concat([1], 2, 3);
+
+
+// 回调函数返回值类型
+// 不要为返回值被忽略的回调函数设置一个any类型的返回值类型：
+/* 错误 */
+function fn(x: () => any) {
+    x();
+}
+// 应该给返回值被忽略的回调函数设置void类型的返回值类型：
+
+/* OK */
+function fn(x: () => void) {
+    x();
+}
+
+// 函数重载，这块在函数声明去详解

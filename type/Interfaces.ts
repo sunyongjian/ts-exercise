@@ -52,3 +52,39 @@ interface Choosable {
 // 因为 age 可选属性的类型的 number，任意属性的类型是 string，所以不是其子集。
 // 任意属性的类型改成 any 即可
 
+
+
+// 合并接口
+interface Box {
+  height: number;
+  width: number;
+}
+
+interface Box {
+  scale: number;
+}
+let box: Box = {height: 5, width: 6, scale: 10};
+
+// 接口的非函数的成员应该是唯一的，但是函数可以不唯一。
+// 对于函数成员，每个同名函数声明都会被当成这个函数的一个重载。 
+// 同时需要注意，当接口 A与后来的接口 A合并时，后面的接口具有更高的优先级。
+interface Document {
+  createElement(tagName: any): Element;
+}
+interface Document {
+  createElement(tagName: "div"): HTMLDivElement;
+  createElement(tagName: "span"): HTMLSpanElement;
+}
+interface Document {
+  createElement(tagName: string): HTMLElement;
+  createElement(tagName: "canvas"): HTMLCanvasElement;
+}
+
+//合并后的 Document将会像下面这样：
+interface Document {
+  createElement(tagName: "canvas"): HTMLCanvasElement;
+  createElement(tagName: "div"): HTMLDivElement;
+  createElement(tagName: "span"): HTMLSpanElement;
+  createElement(tagName: string): HTMLElement;
+  createElement(tagName: any): Element;
+}
